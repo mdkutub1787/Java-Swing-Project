@@ -60,6 +60,7 @@ public class ShopView extends javax.swing.JFrame {
         jPanel2.setForeground(new java.awt.Color(51, 51, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel5.setBackground(new java.awt.Color(102, 255, 255));
         jLabel5.setFont(new java.awt.Font("Sitka Banner", 3, 28)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("IT SHOP");
@@ -118,22 +119,22 @@ public class ShopView extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 150, 340));
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("add");
         add.addTab("tab1", jLabel1);
 
         mainView.addTab("add", add);
 
-        jLabel2.setText("jLabel2");
+        jLabel2.setText("salse");
         salse.addTab("tab1", jLabel2);
 
         mainView.addTab("salse", salse);
 
-        jLabel6.setText("jLabel6");
+        jLabel6.setText("stock");
         stock.addTab("tab1", jLabel6);
 
         mainView.addTab("stock", stock);
 
-        jLabel7.setText("jLabel7");
+        jLabel7.setText("report");
         report.addTab("tab1", jLabel7);
 
         mainView.addTab("report", report);
