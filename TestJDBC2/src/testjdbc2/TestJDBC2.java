@@ -17,8 +17,9 @@ public class TestJDBC2 {
         String url = "jdbc:mysql://localhost:3306/table2";
         String user = "root";
         String password = "1234";
+        String Driver="com.mysql.cj.jdbc.Driver";
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Driver);
             Connection connection = DriverManager.getConnection(url, user, password);
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM teacher;");
             ResultSet rs = ps.executeQuery();
