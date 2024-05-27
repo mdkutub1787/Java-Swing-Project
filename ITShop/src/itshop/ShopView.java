@@ -28,20 +28,18 @@ public class ShopView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         btnAddProduct = new javax.swing.JButton();
         btnSalse = new javax.swing.JButton();
         btnStock = new javax.swing.JButton();
         btnReport = new javax.swing.JButton();
-        mainView = new javax.swing.JTabbedPane();
-        add = new javax.swing.JTabbedPane();
-        jLabel1 = new javax.swing.JLabel();
-        salse = new javax.swing.JTabbedPane();
-        jLabel2 = new javax.swing.JLabel();
-        stock = new javax.swing.JTabbedPane();
-        jLabel6 = new javax.swing.JLabel();
-        report = new javax.swing.JTabbedPane();
-        jLabel7 = new javax.swing.JLabel();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jToolBar1 = new javax.swing.JToolBar();
+        jToolBar2 = new javax.swing.JToolBar();
+        jToolBar3 = new javax.swing.JToolBar();
+        jToolBar4 = new javax.swing.JToolBar();
+        jTabbedPane3 = new javax.swing.JTabbedPane();
 
         jLabel4.setText("jLabel4");
 
@@ -62,6 +60,7 @@ public class ShopView extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("IT SHOP");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 45, 800, -1));
+        jPanel2.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 110));
 
@@ -116,27 +115,20 @@ public class ShopView extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 150, 340));
 
-        jLabel1.setText("add");
-        add.addTab("tab1", jLabel1);
+        jToolBar1.setRollover(true);
+        jTabbedPane2.addTab("add", jToolBar1);
 
-        mainView.addTab("add", add);
+        jToolBar2.setRollover(true);
+        jTabbedPane2.addTab("sales", jToolBar2);
 
-        jLabel2.setText("salse");
-        salse.addTab("tab1", jLabel2);
+        jToolBar3.setRollover(true);
+        jTabbedPane2.addTab("stock", jToolBar3);
 
-        mainView.addTab("salse", salse);
+        jToolBar4.setRollover(true);
+        jTabbedPane2.addTab("report", jToolBar4);
 
-        jLabel6.setText("stock");
-        stock.addTab("tab1", jLabel6);
-
-        mainView.addTab("stock", stock);
-
-        jLabel7.setText("report");
-        report.addTab("tab1", jLabel7);
-
-        mainView.addTab("report", report);
-
-        getContentPane().add(mainView, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 650, 420));
+        getContentPane().add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 650, 420));
+        getContentPane().add(jTabbedPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 650, 400));
 
         pack();
         setLocationRelativeTo(null);
@@ -207,24 +199,22 @@ public class ShopView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane add;
     private javax.swing.JButton btnAddProduct;
     private javax.swing.JButton btnReport;
     private javax.swing.JButton btnSalse;
     private javax.swing.JButton btnStock;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTabbedPane mainView;
-    private javax.swing.JTabbedPane report;
-    private javax.swing.JTabbedPane salse;
-    private javax.swing.JTabbedPane stock;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JToolBar jToolBar2;
+    private javax.swing.JToolBar jToolBar3;
+    private javax.swing.JToolBar jToolBar4;
     // End of variables declaration//GEN-END:variables
 }
