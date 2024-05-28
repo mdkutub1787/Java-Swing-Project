@@ -137,6 +137,36 @@ public class ProductView extends javax.swing.JFrame {
 
     }
 
+    public void editProduct() {
+        String sql = "update product set name=?, unitPrice=?, quantity=?, totalPrice=?, salesPrice=? where id=?";
+        PreparedStatement ps;
+        try {
+            ps = db.getCon().prepareStatement(sql);
+            ps.setString(1, txtName.getText().trim());
+            ps.setFloat(2, Float.parseFloat(txtUnitPrice.getText().trim()));
+            ps.setFloat(3, Float.parseFloat(txtQuantity.getText().trim()));
+            ps.setFloat(4, Float.parseFloat(txtTotalPrice.getText().trim()));
+            ps.setFloat(5, Float.parseFloat(txtSalesPrice.getText().trim()));
+            ps.setInt(6, Integer.parseInt(txtId.getText()));
+
+            ps.executeUpdate();
+
+            ps.close();
+            db.getCon();
+            JOptionPane.showMessageDialog(this, "Update Product Successfully");
+            clear();
+            showProductOnTable();
+
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, "Update Product Unsuccessfully");
+            java.util.logging.Logger.getLogger(ProductView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Update Product Unsuccessfully");
+          java.util.logging.Logger.getLogger(ProductView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -346,6 +376,11 @@ public class ProductView extends javax.swing.JFrame {
         });
 
         btnProductUpdate.setText("Edit");
+        btnProductUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnProductUpdateMouseClicked(evt);
+            }
+        });
 
         btnProductReset.setText("Reset");
         btnProductReset.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -610,6 +645,13 @@ public class ProductView extends javax.swing.JFrame {
         deleteProduct();
 
     }//GEN-LAST:event_btnProductDeleteMouseClicked
+
+    private void btnProductUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductUpdateMouseClicked
+        // TODO add your handling code here:
+        editProduct();
+
+
+    }//GEN-LAST:event_btnProductUpdateMouseClicked
 
     /**
      * @param args the command line arguments
