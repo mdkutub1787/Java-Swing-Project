@@ -444,6 +444,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Delete"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnProductDeleteMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnProductUpdate">
               <Properties>
@@ -503,6 +506,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblProductViewMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

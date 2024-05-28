@@ -15,7 +15,7 @@ public class ProductView extends javax.swing.JFrame {
 
     public ProductView() {
         initComponents();
-       showProductOnTable();
+        showProductOnTable();
     }
 
     public void addProduct() {
@@ -39,7 +39,6 @@ public class ProductView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Add Product Successfully");
             clear();
             showProductOnTable();
-           
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Add Product Unsuccessfully");
@@ -106,6 +105,33 @@ public class ProductView extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(ProductView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(ProductView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void deleteProduct() {
+        String sql = "delete from product where id=?";
+        PreparedStatement ps;
+
+        try {
+            ps = db.getCon().prepareStatement(sql);
+            ps.setInt(1, Integer.parseInt(txtId.getText()));
+            ps.executeUpdate();
+
+            ps.close();
+            db.getCon().close();
+
+            JOptionPane.showMessageDialog(this, "Delete Product Successfully");
+            clear();
+            showProductOnTable();
+
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, "Delete Product Unsuccessfully");
+            java.util.logging.Logger.getLogger(ProductView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Delete Product Unsuccessfully");
+
             java.util.logging.Logger.getLogger(ProductView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
@@ -313,6 +339,11 @@ public class ProductView extends javax.swing.JFrame {
         });
 
         btnProductDelete.setText("Delete");
+        btnProductDelete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnProductDeleteMouseClicked(evt);
+            }
+        });
 
         btnProductUpdate.setText("Edit");
 
@@ -331,6 +362,11 @@ public class ProductView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblProductView.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblProductViewMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblProductView);
 
         javax.swing.GroupLayout addLayout = new javax.swing.GroupLayout(add);
@@ -535,8 +571,7 @@ public class ProductView extends javax.swing.JFrame {
     private void btnAddProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddProductMouseClicked
         // TODO add your handling code here:
         addProduct();
-        
-        
+
     }//GEN-LAST:event_btnAddProductMouseClicked
 
     private void txtQuantityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtQuantityFocusLost
@@ -546,8 +581,35 @@ public class ProductView extends javax.swing.JFrame {
 
     private void btnProductResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductResetMouseClicked
         // TODO add your handling code here:
-         clear();
+        clear();
     }//GEN-LAST:event_btnProductResetMouseClicked
+
+    private void tblProductViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProductViewMouseClicked
+        // TODO add your handling code here:
+        int rowIndex = tblProductView.getSelectedRow();
+
+        String id = tblProductView.getModel().getValueAt(rowIndex, 0).toString();
+        String name = tblProductView.getModel().getValueAt(rowIndex, 1).toString();
+        String unitPrice = tblProductView.getModel().getValueAt(rowIndex, 2).toString();
+        String quantity = tblProductView.getModel().getValueAt(rowIndex, 3).toString();
+        String totalPrice = tblProductView.getModel().getValueAt(rowIndex, 4).toString();
+        String salesPrice = tblProductView.getModel().getValueAt(rowIndex, 5).toString();
+
+        txtId.setText(id);
+        txtName.setText(name);
+        txtUnitPrice.setText(unitPrice);
+        txtQuantity.setText(quantity);
+        txtTotalPrice.setText(totalPrice);
+        txtSalesPrice.setText(salesPrice);
+
+
+    }//GEN-LAST:event_tblProductViewMouseClicked
+
+    private void btnProductDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductDeleteMouseClicked
+        // TODO add your handling code here:
+        deleteProduct();
+
+    }//GEN-LAST:event_btnProductDeleteMouseClicked
 
     /**
      * @param args the command line arguments
