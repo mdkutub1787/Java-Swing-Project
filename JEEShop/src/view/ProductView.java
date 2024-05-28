@@ -16,6 +16,7 @@ public class ProductView extends javax.swing.JFrame {
     public ProductView() {
         initComponents();
         showProductOnTable();
+        showProductToCombo();
     }
 
     public void addProduct() {
@@ -162,9 +163,36 @@ public class ProductView extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ProductView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Update Product Unsuccessfully");
-          java.util.logging.Logger.getLogger(ProductView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
+    }
+
+    public void showProductToCombo() {
+
+        String sql = "selct name from product";
+        PreparedStatement ps;
+
+        comProductName.removeAllItems();
+        ResultSet rs;
+        try {
+            ps = db.getCon().prepareStatement(sql);
+
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {                
+                String productName=rs.getString("name");
+                comProductName.addItem(productName);
+            }
+            ps.close();
+            rs.close();
+            db.getCon().close();
+
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ProductView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(ProductView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -209,7 +237,7 @@ public class ProductView extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comProductName = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -539,7 +567,7 @@ public class ProductView extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Name");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comProductName.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -594,7 +622,7 @@ public class ProductView extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(salesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox1, 0, 104, Short.MAX_VALUE)
+                    .addComponent(comProductName, 0, 104, Short.MAX_VALUE)
                     .addComponent(jTextField3)
                     .addGroup(salesLayout.createSequentialGroup()
                         .addGap(13, 13, 13)
@@ -628,7 +656,7 @@ public class ProductView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(salesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comProductName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9)))
@@ -701,6 +729,7 @@ public class ProductView extends javax.swing.JFrame {
     private void btnaddProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnaddProductMouseClicked
         // TODO add your handling code here:
         mainView.setSelectedIndex(0);
+        showProductToCombo();
     }//GEN-LAST:event_btnaddProductMouseClicked
 
     private void btnsalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnsalesMouseClicked
@@ -829,11 +858,11 @@ public class ProductView extends javax.swing.JFrame {
     private javax.swing.JButton btnreport;
     private javax.swing.JButton btnsales;
     private javax.swing.JButton btnstock;
+    private javax.swing.JComboBox<String> comProductName;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
