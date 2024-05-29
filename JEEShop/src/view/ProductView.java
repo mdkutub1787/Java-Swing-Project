@@ -2,8 +2,6 @@ package view;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.lang.System.Logger;
-import java.lang.System.Logger.Level;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -296,12 +294,15 @@ public class ProductView extends javax.swing.JFrame {
             ps.close();
             db.getCon().close();
 
-            JOptionPane.showMessageDialog(this, "Add Sales Successfully");
+            JOptionPane.showMessageDialog(this, "Add Sales Successfully ! ");
         } catch (ClassNotFoundException | SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Add Sales Unsuccessfully");
+            JOptionPane.showMessageDialog(this, "Add Sales Unsuccessfully ");
             java.util.logging.Logger.getLogger(ProductView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

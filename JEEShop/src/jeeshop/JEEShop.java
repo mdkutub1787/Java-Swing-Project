@@ -10,9 +10,9 @@ public class JEEShop {
     public static void main(String[] args) {
 
         ProductView pv=new ProductView();
-        
+
         pv.setVisible(true);
-        
+
         
     }
 
