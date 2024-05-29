@@ -85,7 +85,7 @@ public class ProductView extends javax.swing.JFrame {
         txtSalesPrice.setText("");
     }
 
-    String[] productViewTableColumn = {"Id", "Name", "Unit Price", "Quantity", "Total Price", "sales Price"};
+    String[] productViewTableColumn = {"Id", "Name", "Unit Price", "Quantity", "Total Price", "Sales Price"};
 
     public void showProductOnTable() {
 
