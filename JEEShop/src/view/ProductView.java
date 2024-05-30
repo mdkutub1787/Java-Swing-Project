@@ -43,7 +43,7 @@ public class ProductView extends javax.swing.JFrame {
         String purchaseProductName = txtName.getText().trim();
 
         try {
-            ps = db.getCon().prepareStatement(sql);
+             ps = db.getCon().prepareStatement(sql);
             rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -66,16 +66,16 @@ public class ProductView extends javax.swing.JFrame {
 
         if (status) {
             String sql = "update stock set quantity=quantity+? where name=?";
-
             try {
                 ps = db.getCon().prepareStatement(sql);
 
-                ps.setString(1, txtName.getText().trim());
-                ps.setFloat(2, Float.parseFloat(txtQuantity.getText().trim()));
+                ps.setFloat(1, Float.parseFloat(txtQuantity.getText().trim()));
+                ps.setString(2, txtName.getText().trim());
 
                 ps.executeUpdate();
-                db.getCon().close();
+
                 ps.close();
+                db.getCon().close();
 
             } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
