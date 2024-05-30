@@ -218,7 +218,7 @@ public class ProductView extends javax.swing.JFrame {
                 float quantity = rs.getFloat("quantity");
                 float unitPrice = rs.getFloat("purchasePrice");
 
-                model.addRow(new Object[]{id, name, unitPrice, quantity});
+                model.addRow(new Object[]{id, name, quantity, unitPrice});
             }
 
             rs.close();
