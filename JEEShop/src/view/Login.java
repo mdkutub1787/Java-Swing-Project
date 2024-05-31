@@ -20,22 +20,18 @@ public class Login extends javax.swing.JFrame {
 
         if (userName.equalsIgnoreCase(user) && password.equals(pass)) {
             JOptionPane.showMessageDialog(rootPane, "Welcome To JEE STORE");
-            LoginClear();
+           
 
             ProductView pv = new ProductView();
             pv.setVisible(true);
 
         } else {
-            JOptionPane.showMessageDialog(rootPane, "incorrect  userName or password");
+            JOptionPane.showMessageDialog(rootPane, "Incorrect  userName or password");
         }
 
     }
 
-    private void LoginClear() {
-        txtUserName.setText("");
-        txtPassword.setText("");
-
-    }
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,8 +48,8 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
+        txtPassword = new javax.swing.JPasswordField();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -86,13 +82,12 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("User Name");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 35, 328, -1));
-        jPanel2.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 73, 290, 50));
+        jPanel2.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 73, 290, 40));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Password");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 168, 334, -1));
-        jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 209, 290, 50));
 
         btnLogin.setBackground(new java.awt.Color(255, 0, 255));
         btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -104,6 +99,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 288, -1, -1));
+        jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 290, 40));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 340, 330));
 
@@ -168,7 +164,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }
