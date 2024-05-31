@@ -85,7 +85,7 @@ public class ProductView extends javax.swing.JFrame {
             ps.setDate(2, convertUtilDateToSqlDate(toDate));
 
             rs = ps.executeQuery();
-            
+
             //Sum total
             while (rs.next()) {
 
@@ -153,10 +153,62 @@ public class ProductView extends javax.swing.JFrame {
                 model.addRow(new Object[]{"", "", "", "Total Amount ", totalPrice});
 
             }
+            ps.close();
+            rs.close();
+            db.getCon().close();
 
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public void getGrossProfit() {
+
+        java.util.Date toDate = dateToReport.getDate();
+        java.util.Date fromDate = dateFromReport.getDate();
+
+        String sql2 = "select sum(totalPrice)from product where purchaseDate between ? and ?";
+        String sql = "select sum(salesTotalPrice)from sales where salesDate between ? and ?";
+
+        try {
+            ps = db.getCon().prepareStatement(sql2);
+
+            ps.setDate(1, convertUtilDateToSqlDate(fromDate));
+            ps.setDate(2, convertUtilDateToSqlDate(toDate));
+
+            float totalPurchasePrice = 0;
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                totalPurchasePrice = rs.getFloat("sum(totalPrice)");
+            }
+
+            rs.close();
+            ps.close();
+            db.getCon().close();
+
+            ps = db.getCon().prepareStatement(sql);
+            ps.setDate(1, convertUtilDateToSqlDate(fromDate));
+            ps.setDate(2, convertUtilDateToSqlDate(toDate));
+
+            rs = ps.executeQuery();
+
+            float salesTotalPrice = 0;
+            while (rs.next()) {
+                salesTotalPrice = rs.getFloat("sum(salesTotalPrice)");
+
+            }
+            ps.close();
+            rs.close();
+            db.getCon().close();
+
+            float getGrossProfit = salesTotalPrice - totalPurchasePrice;
+            lblProfit.setText("Profit : " + getGrossProfit);
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     public boolean getStockProductList() {
@@ -646,12 +698,12 @@ public class ProductView extends javax.swing.JFrame {
         dateFromReport = new com.toedter.calendar.JDateChooser();
         btnReportPurchase = new javax.swing.JButton();
         btnReportSales = new javax.swing.JButton();
-        btnReportStock = new javax.swing.JButton();
+        btnGrossProfit = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblReport = new javax.swing.JTable();
         btnReportReset = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
+        lblProfit = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1190,7 +1242,12 @@ public class ProductView extends javax.swing.JFrame {
             }
         });
 
-        btnReportStock.setText("Stock");
+        btnGrossProfit.setText("Gross Profit");
+        btnGrossProfit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGrossProfitMouseClicked(evt);
+            }
+        });
 
         tblReport.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1207,22 +1264,22 @@ public class ProductView extends javax.swing.JFrame {
 
         btnReportReset.setText("Reset");
 
-        jPanel8.setBackground(new java.awt.Color(0, 0, 51));
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel19.setText("Profit : ");
+        lblProfit.setBackground(new java.awt.Color(0, 0, 0));
+        lblProfit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblProfit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblProfit.setText("Profit : ");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+            .addComponent(lblProfit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+            .addComponent(lblProfit, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout reportLayout = new javax.swing.GroupLayout(report);
@@ -1232,26 +1289,25 @@ public class ProductView extends javax.swing.JFrame {
             .addGroup(reportLayout.createSequentialGroup()
                 .addGroup(reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(reportLayout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, reportLayout.createSequentialGroup()
                             .addComponent(btnReportPurchase)
                             .addGap(18, 18, 18)
                             .addComponent(btnReportSales, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(btnReportStock, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnGrossProfit)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnReportReset)
+                            .addGap(18, 18, 18)
                             .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING))
                     .addGroup(reportLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnReportReset)
-                            .addGroup(reportLayout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(35, 35, 35)
-                                .addComponent(dateFromReport, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel5)
+                        .addGap(35, 35, 35)
+                        .addComponent(dateFromReport, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(dateToReport, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1273,7 +1329,7 @@ public class ProductView extends javax.swing.JFrame {
                         .addGroup(reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnReportPurchase)
                             .addComponent(btnReportSales)
-                            .addComponent(btnReportStock)
+                            .addComponent(btnGrossProfit)
                             .addComponent(btnReportReset))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reportLayout.createSequentialGroup()
@@ -1401,6 +1457,11 @@ public class ProductView extends javax.swing.JFrame {
         getSalesReport();
     }//GEN-LAST:event_btnReportSalesMouseClicked
 
+    private void btnGrossProfitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGrossProfitMouseClicked
+        // TODO add your handling code here:
+        getGrossProfit();
+    }//GEN-LAST:event_btnGrossProfitMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1439,13 +1500,13 @@ public class ProductView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel add;
     private javax.swing.JButton btnAddProduct;
+    private javax.swing.JButton btnGrossProfit;
     private javax.swing.JButton btnProductDelete;
     private javax.swing.JButton btnProductReset;
     private javax.swing.JButton btnProductUpdate;
     private javax.swing.JButton btnReportPurchase;
     private javax.swing.JButton btnReportReset;
     private javax.swing.JButton btnReportSales;
-    private javax.swing.JButton btnReportStock;
     private javax.swing.JButton btnSalesSave;
     private javax.swing.JButton btnaddProduct;
     private javax.swing.JButton btnreport;
@@ -1468,7 +1529,6 @@ public class ProductView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1488,6 +1548,7 @@ public class ProductView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lblProfit;
     private javax.swing.JTabbedPane mainView;
     private javax.swing.JPanel report;
     private javax.swing.JPanel sales;
