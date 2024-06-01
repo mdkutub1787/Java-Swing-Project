@@ -1267,7 +1267,7 @@ public class ProductView extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
         lblProfit.setBackground(new java.awt.Color(0, 0, 0));
-        lblProfit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblProfit.setFont(new java.awt.Font("Sitka Banner", 3, 18)); // NOI18N
         lblProfit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblProfit.setText("Profit : ");
 
@@ -1279,7 +1279,9 @@ public class ProductView extends javax.swing.JFrame {
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblProfit, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addGap(0, 18, Short.MAX_VALUE)
+                .addComponent(lblProfit, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout reportLayout = new javax.swing.GroupLayout(report);
