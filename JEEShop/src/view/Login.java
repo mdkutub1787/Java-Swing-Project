@@ -157,10 +157,11 @@ public class Login extends javax.swing.JFrame {
 
     private void clickShowPassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clickShowPassMouseClicked
         // TODO add your handling code here:
-        if (txtPassword.isShowing()) {
+         if (clickShowPass.isSelected()) {
             txtPassword.setEchoChar((char) 0);
         } else {
             txtPassword.setEchoChar('*');
+
         }
 
     }//GEN-LAST:event_clickShowPassMouseClicked
