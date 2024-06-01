@@ -21,6 +21,7 @@ public class ProductView extends javax.swing.JFrame {
 
     PreparedStatement ps;
     ResultSet rs;
+    public static float stockQuantity = 0;
 
     LocalDate currentDate = LocalDate.now();
     java.sql.Date sqlCurrentDate = java.sql.Date.valueOf(currentDate);
@@ -509,8 +510,8 @@ public class ProductView extends javax.swing.JFrame {
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                float quantity = rs.getFloat("quantity");
-                txtStock.setText(quantity + "");
+                stockQuantity = rs.getFloat("quantity");
+                txtStock.setText(stockQuantity + "");
             }
 
             ps.close();
@@ -518,6 +519,19 @@ public class ProductView extends javax.swing.JFrame {
             rs.close();
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void salesVlidationForQuantity() {
+
+        float salesQuantity = Float.parseFloat(txtSalesQunatity.getText().trim());
+
+        if (salesQuantity > stockQuantity) {
+            JOptionPane.showMessageDialog(this, "Sales quantity is more than stock");
+            txtSalesQunatity.setText("0");
+            txtSalesQunatity.requestFocus();
+        } else {
         }
 
     }
@@ -1445,6 +1459,7 @@ public class ProductView extends javax.swing.JFrame {
     private void txtSalesQunatityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSalesQunatityFocusLost
         // TODO add your handling code here:
         getTotalSalesPrice();
+        salesVlidationForQuantity();
 
     }//GEN-LAST:event_txtSalesQunatityFocusLost
 
@@ -1472,8 +1487,8 @@ public class ProductView extends javax.swing.JFrame {
 
     private void btnReportResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportResetMouseClicked
         // TODO add your handling code here:
-        
-        DefaultTableModel model=new DefaultTableModel();
+
+        DefaultTableModel model = new DefaultTableModel();
         tblReport.setModel(model);
         model.setRowCount(0);
     }//GEN-LAST:event_btnReportResetMouseClicked
