@@ -10,24 +10,24 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
     }
-
+    
     public void getLogin() {
         String userName = "jee";
         String password = "1234";
-
+        
         String user = txtUserName.getText().trim();
         String pass = txtPassword.getText().trim();
-
+        
         if (userName.equalsIgnoreCase(user) && password.equals(pass)) {
             JOptionPane.showMessageDialog(rootPane, "Welcome To JEE STORE");
-
+            
             ProductView pv = new ProductView();
             pv.setVisible(true);
-
+            
         } else {
             JOptionPane.showMessageDialog(rootPane, "Incorrect  userName or password");
         }
-
+        
     }
 
     /**
@@ -48,6 +48,7 @@ public class Login extends javax.swing.JFrame {
         btnLogin = new javax.swing.JButton();
         txtPassword = new javax.swing.JPasswordField();
         clickShowPass = new javax.swing.JCheckBox();
+        btnExit = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -105,7 +106,7 @@ public class Login extends javax.swing.JFrame {
                 btnLoginMouseClicked(evt);
             }
         });
-        jPanel2.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 280, 150, -1));
+        jPanel2.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 100, -1));
         jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 290, 40));
 
         clickShowPass.setBackground(new java.awt.Color(0, 0, 0));
@@ -117,7 +118,18 @@ public class Login extends javax.swing.JFrame {
                 clickShowPassMouseClicked(evt);
             }
         });
-        jPanel2.add(clickShowPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 240, 120, -1));
+        jPanel2.add(clickShowPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 120, -1));
+
+        btnExit.setBackground(new java.awt.Color(0, 0, 0));
+        btnExit.setFont(new java.awt.Font("Sitka Display", 1, 18)); // NOI18N
+        btnExit.setForeground(new java.awt.Color(255, 255, 255));
+        btnExit.setText("Exit");
+        btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnExitMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 100, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 350, 340));
 
@@ -149,6 +161,11 @@ public class Login extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_clickShowPassMouseClicked
+
+    private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btnExitMouseClicked
 
     /**
      * @param args the command line arguments
@@ -186,6 +203,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnLogin;
     private javax.swing.JCheckBox clickShowPass;
     private javax.swing.JLabel jLabel1;
