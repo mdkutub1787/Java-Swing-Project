@@ -1251,13 +1251,10 @@ public class ProductView extends javax.swing.JFrame {
 
         tblReport.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane3.setViewportView(tblReport);
@@ -1267,7 +1264,7 @@ public class ProductView extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
         lblProfit.setBackground(new java.awt.Color(0, 0, 0));
-        lblProfit.setFont(new java.awt.Font("Sitka Banner", 3, 18)); // NOI18N
+        lblProfit.setFont(new java.awt.Font("Sitka Display", 1, 18)); // NOI18N
         lblProfit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblProfit.setText("Profit : ");
 
