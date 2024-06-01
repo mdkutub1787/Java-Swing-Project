@@ -20,7 +20,6 @@ public class Login extends javax.swing.JFrame {
 
         if (userName.equalsIgnoreCase(user) && password.equals(pass)) {
             JOptionPane.showMessageDialog(rootPane, "Welcome To JEE STORE");
-           
 
             ProductView pv = new ProductView();
             pv.setVisible(true);
@@ -30,8 +29,6 @@ public class Login extends javax.swing.JFrame {
         }
 
     }
-
-  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,6 +47,7 @@ public class Login extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
         txtPassword = new javax.swing.JPasswordField();
+        clickShowPass = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -75,7 +73,9 @@ public class Login extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, -1));
@@ -94,7 +94,7 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Password");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 168, 334, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 334, -1));
 
         btnLogin.setBackground(new java.awt.Color(0, 0, 0));
         btnLogin.setFont(new java.awt.Font("Sitka Display", 3, 18)); // NOI18N
@@ -106,7 +106,18 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 280, 150, -1));
-        jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 290, 40));
+        jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 290, 40));
+
+        clickShowPass.setBackground(new java.awt.Color(0, 0, 0));
+        clickShowPass.setFont(new java.awt.Font("Sitka Display", 3, 14)); // NOI18N
+        clickShowPass.setForeground(new java.awt.Color(255, 255, 255));
+        clickShowPass.setText("Show password");
+        clickShowPass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clickShowPassMouseClicked(evt);
+            }
+        });
+        jPanel2.add(clickShowPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 240, 120, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 350, 340));
 
@@ -128,6 +139,16 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         getLogin();
     }//GEN-LAST:event_btnLoginMouseClicked
+
+    private void clickShowPassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clickShowPassMouseClicked
+        // TODO add your handling code here:
+        if (txtPassword.isShowing()) {
+            txtPassword.setEchoChar((char) 0);
+        } else {
+            txtPassword.setEchoChar('*');
+        }
+
+    }//GEN-LAST:event_clickShowPassMouseClicked
 
     /**
      * @param args the command line arguments
@@ -166,6 +187,7 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
+    private javax.swing.JCheckBox clickShowPass;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
