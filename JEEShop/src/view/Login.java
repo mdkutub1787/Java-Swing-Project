@@ -22,6 +22,7 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Welcome To JEE STORE");
             
             ProductView pv = new ProductView();
+            this.setVisible(false);
             pv.setVisible(true);
             
         } else {
@@ -150,6 +151,8 @@ public class Login extends javax.swing.JFrame {
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
         // TODO add your handling code here:
         getLogin();
+        
+        
     }//GEN-LAST:event_btnLoginMouseClicked
 
     private void clickShowPassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clickShowPassMouseClicked
