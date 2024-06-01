@@ -97,7 +97,7 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setText("Password");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 334, -1));
 
-        btnLogin.setBackground(new java.awt.Color(0, 0, 0));
+        btnLogin.setBackground(new java.awt.Color(0, 102, 0));
         btnLogin.setFont(new java.awt.Font("Sitka Display", 3, 18)); // NOI18N
         btnLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnLogin.setText("Login");
@@ -106,7 +106,7 @@ public class Login extends javax.swing.JFrame {
                 btnLoginMouseClicked(evt);
             }
         });
-        jPanel2.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 100, -1));
+        jPanel2.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 100, 30));
         jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 290, 40));
 
         clickShowPass.setBackground(new java.awt.Color(0, 0, 0));
@@ -120,7 +120,7 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel2.add(clickShowPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 120, -1));
 
-        btnExit.setBackground(new java.awt.Color(0, 0, 0));
+        btnExit.setBackground(new java.awt.Color(204, 0, 0));
         btnExit.setFont(new java.awt.Font("Sitka Display", 1, 18)); // NOI18N
         btnExit.setForeground(new java.awt.Color(255, 255, 255));
         btnExit.setText("Exit");
