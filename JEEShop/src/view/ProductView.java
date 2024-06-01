@@ -1260,6 +1260,11 @@ public class ProductView extends javax.swing.JFrame {
         jScrollPane3.setViewportView(tblReport);
 
         btnReportReset.setText("Reset");
+        btnReportReset.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReportResetMouseClicked(evt);
+            }
+        });
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1461,6 +1466,14 @@ public class ProductView extends javax.swing.JFrame {
         // TODO add your handling code here:
         getGrossProfit();
     }//GEN-LAST:event_btnGrossProfitMouseClicked
+
+    private void btnReportResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportResetMouseClicked
+        // TODO add your handling code here:
+        
+        DefaultTableModel model=new DefaultTableModel();
+        tblReport.setModel(model);
+        model.setRowCount(0);
+    }//GEN-LAST:event_btnReportResetMouseClicked
 
     /**
      * @param args the command line arguments
