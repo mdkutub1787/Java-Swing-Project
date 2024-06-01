@@ -1039,10 +1039,13 @@ public class ProductView extends javax.swing.JFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Unit Price");
 
+        txtSalesUnitPrice.setEditable(false);
+
         jLabel11.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Total  Price");
 
+        txtSalesTotalPrice.setEditable(false);
         txtSalesTotalPrice.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
 
         btnSalesSave.setBackground(new java.awt.Color(204, 204, 255));
