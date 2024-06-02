@@ -12,7 +12,6 @@ import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import util.DbUtil;
 
@@ -26,8 +25,6 @@ public class ProductView extends javax.swing.JFrame {
 
     LocalDate currentDate = LocalDate.now();
     java.sql.Date sqlCurrentDate = java.sql.Date.valueOf(currentDate);
-
-    private JScrollPane scrollPane;
 
     public ProductView() {
         initComponents();
@@ -324,7 +321,6 @@ public class ProductView extends javax.swing.JFrame {
         String sql = "insert into product(name,unitPrice,quantity,totalPrice, salesPrice,purchaseDate) values (?,?,?,?,?,?)";
         PreparedStatement ps;
 
-       
         try {
             ps = db.getCon().prepareStatement(sql);
 
