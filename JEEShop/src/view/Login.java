@@ -47,14 +47,13 @@ public class Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
         clickShowPass = new javax.swing.JCheckBox();
-        btnExit = new javax.swing.JButton();
-        btnLogin = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        btnLogin = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(500, 420));
-        setPreferredSize(new java.awt.Dimension(550, 400));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setText("User Name");
@@ -73,13 +72,7 @@ public class Login extends javax.swing.JFrame {
         });
         getContentPane().add(clickShowPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, -1, -1));
 
-        btnExit.setText("Exit");
-        btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnExitMouseClicked(evt);
-            }
-        });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, -1, -1));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnLogin.setText("Login");
         btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -87,23 +80,24 @@ public class Login extends javax.swing.JFrame {
                 btnLoginMouseClicked(evt);
             }
         });
-        getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, -1, -1));
+        jPanel1.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 320, -1, -1));
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        btnExit.setText("Exit");
+        btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnExitMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/pexels-zyuliansyah-573130.jpg"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 440));
+        jPanel2.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 440));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 440));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
-        // TODO add your handling code here:
-        getLogin();
-    }//GEN-LAST:event_btnLoginMouseClicked
 
     private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked
         // TODO add your handling code here:
@@ -113,12 +107,17 @@ public class Login extends javax.swing.JFrame {
     private void clickShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickShowPassActionPerformed
         // TODO add your handling code here:
         if(clickShowPass.isSelected()){
-        txtPassword.setEchoChar((char)0);        
+            txtPassword.setEchoChar((char)0);
         }
         else{
-        txtPassword.setEchoChar('*');
+            txtPassword.setEchoChar('*');
         }
     }//GEN-LAST:event_clickShowPassActionPerformed
+
+    private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
+        // TODO add your handling code here:
+        getLogin();
+    }//GEN-LAST:event_btnLoginMouseClicked
 
     /**
      * @param args the command line arguments
@@ -160,9 +159,9 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton btnLogin;
     private javax.swing.JCheckBox clickShowPass;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
