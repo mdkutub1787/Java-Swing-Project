@@ -1,0 +1,111 @@
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: jeeswing
+-- ------------------------------------------------------
+-- Server version	8.0.37
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `product`
+--
+
+DROP TABLE IF EXISTS `product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `product` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `unitPrice` float(10,2) NOT NULL,
+  `quantity` float(10,2) NOT NULL,
+  `totalPrice` float(10,2) NOT NULL,
+  `salesPrice` float(10,2) NOT NULL,
+  `purchaseDate` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product`
+--
+
+LOCK TABLES `product` WRITE;
+/*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` VALUES (1,'Oppo',20000.00,100.00,2000000.00,22000.00,'2024-05-31'),(2,'Vivo Y 21',14000.00,100.00,1400000.00,15000.00,'2024-05-31'),(3,'I Phone',100000.00,5.00,500000.00,120000.00,'2024-05-31'),(4,'REDMI 13 Pro',10000.00,10.00,100000.00,12000.00,'2024-06-01'),(6,'Redmi 9',20000.00,11.00,220000.00,22000.00,'2024-06-01'),(8,'samsung',50000.00,10.00,500000.00,51000.00,'2024-06-01'),(9,'Oppo',20000.00,110.00,2200000.00,22000.00,'2024-06-02'),(10,'Itel',100.00,5000.00,500000.00,8000.00,'2024-06-02'),(11,'Infinix',10000.00,100.00,1000000.00,12000.00,'2024-06-02'),(12,'Xaomi',15000.00,100.00,1500000.00,16000.00,'2024-06-02'),(13,'REDMI 13 Pro Max',20000.00,100.00,2000000.00,22000.00,'2024-06-02'),(14,'Samsung M50',50000.00,100.00,5000000.00,51000.00,'2024-06-02'),(15,'Infinix Hot40i',15000.00,100.00,1500000.00,16000.00,'2024-06-02'),(16,'Vivo Y 31',24000.00,100.00,2400000.00,25000.00,'2024-06-02');
+/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sales`
+--
+
+DROP TABLE IF EXISTS `sales`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `sales` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `salesUnitPrice` float(10,2) NOT NULL,
+  `salesQuantity` float(10,2) NOT NULL,
+  `salesTotalPrice` float(10,2) NOT NULL,
+  `salesDate` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sales`
+--
+
+LOCK TABLES `sales` WRITE;
+/*!40000 ALTER TABLE `sales` DISABLE KEYS */;
+INSERT INTO `sales` VALUES (1,'REDMI 9',12000.00,1.00,12000.00,'2024-05-14'),(2,'Vivo Y 21',15000.00,5.00,75000.00,'2024-05-14'),(3,'I Phone',120000.00,1.00,120000.00,'2024-05-22'),(4,'Oppo',22000.00,5.00,110000.00,'2024-06-19'),(5,'Oppo',22000.00,5.00,110000.00,'2024-06-19'),(6,'Jam',60.00,10.00,600.00,'2024-06-12'),(7,'I Phone',120000.00,1.00,120000.00,'2024-06-30'),(8,'Oppo',22000.00,1.00,22000.00,'2024-06-02'),(9,'samsung',51000.00,1.00,51000.00,'2024-06-02'),(10,'REDMI 13 Pro',12000.00,2.00,24000.00,'2024-06-10'),(11,'Oppo',22000.00,2.00,24000.00,'2024-06-10'),(12,'Oppo',22000.00,2.00,24000.00,'2024-06-10'),(13,'Redmi 9',22000.00,5.00,110000.00,'2024-06-20'),(14,'Redmi 9',22000.00,21.00,462000.00,'2024-06-20'),(15,'Oppo',22000.00,90.00,1980000.00,'2024-06-02'),(16,'Oppo',22000.00,2.00,44000.00,'2024-06-07'),(17,'Oppo',22000.00,1.00,22000.00,'2024-06-12'),(18,'Vivo Y 21',15000.00,10.00,150000.00,'2024-06-06'),(19,'Oppo',22000.00,1.00,22000.00,'2024-06-02'),(20,'Oppo',22000.00,1.00,22000.00,'2024-06-01'),(21,'Oppo',22000.00,2.00,44000.00,'2024-06-19'),(22,'Oppo',22000.00,4.00,88000.00,'2024-06-19'),(23,'REDMI 13 Pro',12000.00,5.00,60000.00,'2024-06-11'),(24,'Oppo',22000.00,4.00,88000.00,'2024-06-18'),(25,'samsung',51000.00,1.00,51000.00,'2024-06-12'),(26,'Oppo',22000.00,10.00,220000.00,'2024-06-19'),(27,'Oppo',22000.00,10.00,220000.00,'2024-06-24'),(28,'Oppo',22000.00,4.00,88000.00,'2024-06-21'),(29,'Oppo',22000.00,10.00,220000.00,'2024-06-20');
+/*!40000 ALTER TABLE `sales` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `stock`
+--
+
+DROP TABLE IF EXISTS `stock`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `stock` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `quantity` float(10,2) NOT NULL,
+  `purcahsePrice` float(10,2) NOT NULL,
+  `purchaseDate` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `stock`
+--
+
+LOCK TABLES `stock` WRITE;
+/*!40000 ALTER TABLE `stock` DISABLE KEYS */;
+INSERT INTO `stock` VALUES (1,'REDMI 9',-6.00,10000.00,'2024-05-31'),(2,'Vivo Y 21',85.00,14000.00,'2024-05-31'),(3,'I Phone',3.00,100000.00,'2024-05-31'),(4,'REDMI 13 Pro',3.00,10000.00,'2024-06-01'),(5,'Oppo',66.00,20000.00,'2024-06-01'),(6,'Jam',90.00,50.00,'2024-06-01'),(7,'samsung',8.00,50000.00,'2024-06-01'),(8,'Itel',5000.00,100.00,'2024-06-02'),(9,'Infinix',100.00,10000.00,'2024-06-02'),(10,'Xaomi',100.00,15000.00,'2024-06-02'),(11,'REDMI 13 Pro Max',100.00,20000.00,'2024-06-02'),(12,'Samsung M50',100.00,50000.00,'2024-06-02'),(13,'Infinix Hot40i',100.00,15000.00,'2024-06-02'),(14,'Vivo Y 31',100.00,24000.00,'2024-06-02');
+/*!40000 ALTER TABLE `stock` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2024-06-02 13:39:03
