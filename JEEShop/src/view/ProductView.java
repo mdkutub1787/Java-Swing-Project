@@ -31,6 +31,7 @@ public class ProductView extends javax.swing.JFrame {
         showProductOnTable();
         showProductToCombo();
         showStockOnTable();
+        showSalesTable();
 
         comProductName.addItemListener(new ItemListener() {
             @Override
@@ -1428,6 +1429,7 @@ public class ProductView extends javax.swing.JFrame {
     private void btnAddProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddProductMouseClicked
         // TODO add your handling code here:
         addProduct();
+        
 
     }//GEN-LAST:event_btnAddProductMouseClicked
 
@@ -1471,6 +1473,7 @@ public class ProductView extends javax.swing.JFrame {
     private void btnProductUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductUpdateMouseClicked
         // TODO add your handling code here:
         editProduct();
+        
 
     }//GEN-LAST:event_btnProductUpdateMouseClicked
 
